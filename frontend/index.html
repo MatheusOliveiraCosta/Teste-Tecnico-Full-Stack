@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendamento cliníco</title>
+    <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+    <main class="container">
+        <h1>Agendar Consulta</h1>
+        <section class="card">
+            <label for="data">Escolha uma data</label>
+            <input type="date" id="data" />
+
+            <div id="mensagem" class="mensagem"></div>
+
+            <div id="horarios" class="horarios"></div>
+        </section>
+
+        <section class="card" id="form-agendamento" hidden>
+            <h2>Confirmar Agendamento</h2>
+            <p id="resumo"></p>
+            <label for="paciente">Nome</label>
+            <input type="text" id="paciente" placeholder="Digite seu nome" />
+            <button id="btn-confirmar">Confirmar Agendamento</button>
+            <div id="resul" class="mensagem"></div>
+        </section>
+
+        <section class="card">
+            <h2>Agendamentos já marcados</h2>
+            <ul id="lista-agendados"></ul>
+        </section>
+
+    </main>
+    <script src="app.js"></script>
+</body>
+</html>

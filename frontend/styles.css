@@ -1,0 +1,108 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f4f5f7;
+  margin: 0;
+  padding: 2rem 1rem;
+}
+
+.container {
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: #333;
+}
+
+input[type="date"],
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.horarios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.slot {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #6c5ce7;
+  color: #6c5ce7;
+  border-radius: 6px;
+  cursor: pointer;
+  background: white;
+  font-size: 0.9rem;
+}
+
+.slot:hover {
+  background: #6c5ce7;
+  color: white;
+}
+
+button {
+  background: #6c5ce7;
+  color: white;
+  border: none;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.mensagem {
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.mensagem.erro {
+  color: #d63031;
+}
+
+.mensagem.sucesso {
+  color: #00b894;
+}
+
+ul#lista-agendados {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul#lista-agendados li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #eee;
+  font-size: 0.9rem;
+}

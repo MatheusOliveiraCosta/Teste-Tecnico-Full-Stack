@@ -30,3 +30,8 @@ function isWeekend(dateStr) {
     const day = date.getUTCDay(); // 0 = domingo, 6 = sábado
     return day === 0 || day === 6;
 }
+
+module.exports = {
+    isHoliday,
+    isWeekend
+};
