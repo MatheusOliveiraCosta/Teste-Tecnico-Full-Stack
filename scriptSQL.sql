@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS testeFS;
+
+USE testeFS;
+
+CREATE TABLE IF NOT EXISTS appointments (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    data_ DATE NOT NULL,
+    tempo TIME NOT NULL,
+    paciente VARCHAR(255) NOT NULL,
+    criado_em TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE KEY unico_horario (data_, tempo)
+);
