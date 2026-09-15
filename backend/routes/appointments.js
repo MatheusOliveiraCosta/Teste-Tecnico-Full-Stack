@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const pool = require('../db');
+const pool = require('../bd');
 const { isHoliday, isWeekend } = require('../utils/holidays');
 
 const HORA_INICIO = 8;
@@ -123,3 +123,5 @@ router.get('/appointments', async (req, res) => {
     return res.status(500).json({ erro: 'Erro ao listar agendamentos' });
   }
 });
+
+module.exports = router;
