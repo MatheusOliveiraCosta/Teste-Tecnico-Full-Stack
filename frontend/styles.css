@@ -3,10 +3,11 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background: #f4f5f7;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: #ffffff;
   margin: 0;
   padding: 2rem 1rem;
+  color: #690000;
 }
 
 .container {
@@ -14,13 +15,34 @@ body {
   margin: 0 auto;
 }
 
+.icone-medico {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  width: 96px;
+  height: auto;
+  z-index: 10;
+  border-radius: 999px;
+  box-shadow: 0px 4px 20px rgba(76, 76, 76, 0.3);
+}
+
 h1 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
+.titulo-principal{
+  padding: 38px;
+  color: #cb4545;
+  background-color: rgb(248, 250, 250);
+  text-align: center;
+  border-radius: 999px;
+   box-shadow: 0px 4px 20px rgba(212, 112, 112, 0.258);
+   letter-spacing: 1.05px;
+}
+
 .card {
-  background: white;
+  background: rgb(250, 245, 245);
   border-radius: 10px;
   padding: 1.25rem;
   margin-bottom: 1.25rem;
@@ -32,7 +54,7 @@ label {
   font-size: 0.85rem;
   font-weight: 600;
   margin-bottom: 0.4rem;
-  color: #333;
+  color: #7e1111;
 }
 
 input[type="date"],
@@ -54,32 +76,59 @@ input[type="text"] {
 
 .slot {
   padding: 0.5rem 0.9rem;
-  border: 1px solid #6c5ce7;
-  color: #6c5ce7;
-  border-radius: 6px;
+  border: 1px solid #e75c5c;
+  color: #e75c5c;
+  border-radius: 999px;
   cursor: pointer;
   background: white;
   font-size: 0.9rem;
 }
 
 .slot:hover {
-  background: #6c5ce7;
+  background: #e75c5c;
   color: white;
 }
 
 button {
-  background: #6c5ce7;
-  color: white;
+  background: #e75c5c;
+  color: rgb(255, 255, 255);
   border: none;
   padding: 0.7rem 1rem;
-  border-radius: 6px;
+  border-radius: 999px;
   font-size: 1rem;
   cursor: pointer;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 button:hover {
-  opacity: 0.9;
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg,
+    transparent,
+    transparent 30%,
+    rgba(255, 0, 0, 0.5)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+button:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
 }
 
 .mensagem {
@@ -103,6 +152,47 @@ ul#lista-agendados {
 
 ul#lista-agendados li {
   padding: 0.5rem 0;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #cf9595;
   font-size: 0.9rem;
+}
+
+.input-agenda {
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-agenda input {
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0;
+}
+
+.input-agenda::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    rgba(255, 0, 0, 0.3)
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+}
+
+.input-agenda:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+.input-agenda:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
 }

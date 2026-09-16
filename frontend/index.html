@@ -4,14 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agendamento cliníco</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
     <main class="container">
+        <h1 class="titulo-principal">AGENDAMENTO CLÍNICO</h1>
         <h1>Agendar Consulta</h1>
         <section class="card">
             <label for="data">Escolha uma data</label>
-            <input type="date" id="data" />
+            <div class="input-agenda"><input type="date" id="data" /></div>
 
             <div id="mensagem" class="mensagem"></div>
 
@@ -33,6 +37,7 @@
         </section>
 
     </main>
+    <img class="icone-medico" src="../assets/med.png" alt="Símbolo médico">
     <script src="app.js"></script>
 </body>
 </html>

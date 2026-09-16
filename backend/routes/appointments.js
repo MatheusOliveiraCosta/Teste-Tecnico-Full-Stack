@@ -18,12 +18,24 @@ function dataValida(dateStr) {
     return /^\d{4}-\d{2}-\d{2}$/.test(dateStr) && !isNaN(new Date(`${dateStr}T00:00:00Z`));
 }
 
+function dataPassada(dateStr){
+    const hoje = new Date();
+    hoje.setHours(0, 0, 0, 0);
+
+    const dataInformada = new Date(`${dateStr}T00:00:00`);
+    return dataInformada < hoje;
+}
+
 //get avaliable
 router.get('/available', async (req, res) => {
     const { date } = req.query;
 
     if (!date || !dataValida(date)) {
         return res.status(400).json({ erro: 'Informe uma data válida no formato YYYY-MM-DD' });
+    }
+
+    if(dataPassada(data)){
+        return res.status(400).json({ erro: 'Não é possível consultar disponibilidade para uma data passada'});
     }
 
     try {
@@ -57,6 +69,9 @@ router.post('/appointments', async (req, res) => {
 
     if (!date || !dataValida(date)) {
         return res.status(400).json({ erro: 'Informe uma data válida no formato YYYY-MM-DD' });
+    }
+    if (dataPassada(date)){
+        return res.status(400).json({ erro: 'Não é possível agendar em uma data passada'})
     }
     if (!time || !/^\d{2}:\d{2}$/.test(time)) {
         return res.status(400).json({ erro: 'Informe um horário válido no formato HH:MM' });
