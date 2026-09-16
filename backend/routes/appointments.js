@@ -26,6 +26,11 @@ function dataPassada(dateStr){
     return dataInformada < hoje;
 }
 
+function horarioPassado(dateStr, time) {
+    const dataHora = new Date(`${dateStr}T${time}:00`);
+    return dataHora < new Date();
+}
+
 //get avaliable
 router.get('/available', async (req, res) => {
     const { date } = req.query;
@@ -34,7 +39,7 @@ router.get('/available', async (req, res) => {
         return res.status(400).json({ erro: 'Informe uma data válida no formato YYYY-MM-DD' });
     }
 
-    if(dataPassada(data)){
+    if (dataPassada(date)) {
         return res.status(400).json({ erro: 'Não é possível consultar disponibilidade para uma data passada'});
     }
 
@@ -54,7 +59,9 @@ router.get('/available', async (req, res) => {
         );
         const horariosOcupados = new Set(ocupados.map((o) => o.tempo));
 
-        const disponiveis = gerarSlots().filter((slot) => !horariosOcupados.has(slot));
+        const disponiveis = gerarSlots().filter(
+            (slot) => !horariosOcupados.has(slot) && !horarioPassado(date, slot)
+        );
 
         return res.json({ date, disponiveis });
     } catch (err) {
@@ -75,6 +82,9 @@ router.post('/appointments', async (req, res) => {
     }
     if (!time || !/^\d{2}:\d{2}$/.test(time)) {
         return res.status(400).json({ erro: 'Informe um horário válido no formato HH:MM' });
+    }
+    if (horarioPassado(date, time)) {
+        return res.status(400).json({ erro: 'Não é possível agendar um horário que já passou' });
     }
     if (!paciente || paciente.trim().length === 0) {
         return res.status(400).json({ erro: 'Informe o nome do paciente' });

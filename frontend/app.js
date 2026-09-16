@@ -12,7 +12,16 @@ const listaAgendamentos = document.getElementById('lista-agendados');
 
 let dataEscolhida = null;
 let horarioEscolhido = null;
-inputData.min = new Date().toISOString().split('T')[0];
+
+function dataAtualLocal() {
+    const agora = new Date();
+    const ano = agora.getFullYear();
+    const mes = String(agora.getMonth() + 1).padStart(2, '0');
+    const dia = String(agora.getDate()).padStart(2, '0');
+    return `${ano}-${mes}-${dia}`;
+}
+
+inputData.min = dataAtualLocal();
 
 inputData.addEventListener('change', async () => {
     dataEscolhida = inputData.value;
@@ -22,6 +31,14 @@ inputData.addEventListener('change', async () => {
     divMensagem.className = 'mensagem';
 
     if (!dataEscolhida) return;
+
+    if (dataEscolhida < dataAtualLocal()) {
+        divMensagem.textContent = 'Não é possível selecionar uma data passada.';
+        divMensagem.className = 'mensagem erro';
+        inputData.value = '';
+        dataEscolhida = null;
+        return;
+    }
 
     try {
         const resp = await fetch(`${API_URL}/available?date=${dataEscolhida}`);
